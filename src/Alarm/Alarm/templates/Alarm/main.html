@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>한국외국어대학교 산업경영공학과</title>
+
+    <style>
+        .outer-div {
+            background-color : blue;
+            position: relative;
+          }
+
+        .inner-div {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+          }
+
+          .parent {
+            display: grid; 
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 10px;
+            border: 1px solid black;
+            margin: 1px;
+            padding: 10px;
+            height: 100px;
+          }
+      
+          .child {
+            width: 100px;
+            height: 100px;
+            background-color: #4FB0BE;
+            text-align: center;
+            color: white;
+      
+          }
+    </style>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+</head>
+
+<body>
+    <div class="outer-div" style="background-color: #2b496d; height:100px;text-align:center">
+        <div class="inner-div" style="color:white;font-size:30px">산업경영공학과</div>
+    </div>
+
+    <div style="background-color:#f2f2f2; height:50px; position: relative;">
+        <div class="inner-div" style="left:98%">
+            <span class="material-symbols-outlined">notifications</span>
+        </div>
+    </div>
+
+    <div style="height: 300px">
+        <div style="display: flex; flex-direction: row">
+            <div>번호</div>
+            <div>제목</div>
+        </div>
+        <dvi>
+            <!-- 여기가 게시글 시작-->
+            <div>게시글</div>
+            <div>게시글</div>
+            <div>게시글</div>
+        </div>
+
+    </div>
+
+    <div style="height:150px; border: 1px solid black;">
+        <div >Hot link</div>
+        <div style="display: flex; flex-direction: row; border: None; justify-content:space-evenly">
+            <div class="child"><a href="https://ime.hufs.ac.kr/ime/index.do" target="_blank" style="color:white;text-decoration-line: none;">산업경영공학과 홈페이지</a></div>
+            <div class="child"><a href="https://www.instagram.com/hufsime/" target="_blank" style="color:white;text-decoration-line: none;">산업경영공학과 인스타그램</a></div>
+            <div class="child"><a href="https://open.kakao.com/o/gG0w5Ekf" target="_blank" style="color:white;text-decoration-line: none;">산업경영공학과 오픈채팅방</a></div>
+            <div class="child"><a href="https://chungmok.notion.site/chungmok/HUFS-IME-Capstone-Project-Archive-5641b7b9fbf54a1587df6c7" target="_blank" style="color:white;text-decoration-line: none;">졸업프로젝트 Archive</a></div>
+        </div>
+    </div>
+
+    <div>학사일정</div>
+
+</body>
+</html>
