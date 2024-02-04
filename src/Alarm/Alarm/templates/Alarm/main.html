@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <title>한국외국어대학교 산업경영공학과</title>
 
+    <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+
     <style>
         .outer-div {
             background-color : blue;
@@ -41,12 +43,12 @@
 
 <body>
     <div class="outer-div" style="background-color: #2b496d; height:100px;text-align:center">
-        <div class="inner-div" style="color:white;font-size:30px">산업경영공학과</div>
+        <div id="home_button" class="inner-div" style="color:white;font-size:30px">산업경영공학과</div>
     </div>
 
     <div style="background-color:#f2f2f2; height:50px; position: relative;">
-        <div class="inner-div" style="left:98%">
-            <span class="material-symbols-outlined">notifications</span>
+        <div class="inner-div" style="left:97vw">
+            <span id="alarm_button" class="material-symbols-outlined">notifications</span>
         </div>
     </div>
 
@@ -70,11 +72,22 @@
             <div class="child"><a href="https://ime.hufs.ac.kr/ime/index.do" target="_blank" style="color:white;text-decoration-line: none;">산업경영공학과 홈페이지</a></div>
             <div class="child"><a href="https://www.instagram.com/hufsime/" target="_blank" style="color:white;text-decoration-line: none;">산업경영공학과 인스타그램</a></div>
             <div class="child"><a href="https://open.kakao.com/o/gG0w5Ekf" target="_blank" style="color:white;text-decoration-line: none;">산업경영공학과 오픈채팅방</a></div>
-            <div class="child"><a href="https://chungmok.notion.site/chungmok/HUFS-IME-Capstone-Project-Archive-5641b7b9fbf54a1587df6c7" target="_blank" style="color:white;text-decoration-line: none;">졸업프로젝트 Archive</a></div>
+            <div class="child"><a href="https://chungmok.notion.site/chungmok/HUFS-IME-Capstone-Project-Archive-5641b7b9fbf54a1587df6c76387f3d17" target="_blank" style="color:white;text-decoration-line: none;">졸업프로젝트 Archive</a></div>
         </div>
     </div>
 
     <div>학사일정</div>
 
+    <script>
+        $('#alarm_button').click(function(){
+            window.location = 'content/alarm';
+        })
+
+        $('#home_button').click(function(){
+            window.location = '';
+        })
+
+
+    </script>
 </body>
 </html>

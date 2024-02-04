@@ -17,8 +17,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from .views import Main
+from content.views import NewAlarm
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("",Main.as_view())
+    path("",Main.as_view()),
+    path("content/alarm",NewAlarm.as_view())
 ]

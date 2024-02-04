@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>최근 알람 목록</title>
+
+    <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+    <style>
+        .outer-div {
+            background-color : blue;
+            position: relative;
+          }
+
+        .inner-div {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+          }
+    </style>
+</head>
+
+<body>
+    <div class="outer-div" style="background-color: #2b496d; height:100px;text-align:center">
+        <div id="home_button" class="inner-div" style="color:white;font-size:30px">산업경영공학과</div>
+    </div>
+    <div>최근 게시물</div>
+
+    <script>
+        $('#home_button').click(function(){
+            window.location = '/';
+        })
+
+    </script>
+
+</body>
+</html>
