@@ -53,15 +53,20 @@
     </div>
 
     <div style="height: 300px">
-        <div style="display: flex; flex-direction: row">
+        <div style="display: flex; flex-direction: row;height:50px; position: relative;">
             <div>번호</div>
             <div>제목</div>
         </div>
         <dvi>
             <!-- 여기가 게시글 시작-->
-            <div>게시글</div>
-            <div>게시글</div>
-            <div>게시글</div>
+            {% for post in posts %}
+            <div style="display: flex; flex-direction: row">
+                <div> {{ post.number }} </div>
+                <div style="font-size:20px"> {{ post.title }} </div>
+                <div> {{ post.date }} </div>
+                
+            </div>
+            {% endfor %}
         </div>
 
     </div>
