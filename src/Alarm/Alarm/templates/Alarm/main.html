@@ -1,98 +1,188 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>한국외국어대학교 산업경영공학과</title>
 
-    <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
     <style>
-        .outer-div {
-            background-color : blue;
-            position: relative;
-          }
+      .outer-div {
+        background-color: blue;
+        position: relative;
+      }
 
-        .inner-div {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-          }
+      .inner-div {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
 
-          .parent {
-            display: grid; 
-            grid-template-columns: 1fr 1fr;
-            grid-gap: 10px;
-            border: 1px solid black;
-            margin: 1px;
-            padding: 10px;
-            height: 100px;
-          }
-      
-          .child {
-            width: 100px;
-            height: 100px;
-            background-color: #4FB0BE;
-            text-align: center;
-            color: white;
-      
-          }
+      .parent {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 10px;
+        border: 1px solid black;
+        margin: 1px;
+        padding: 10px;
+        height: 100px;
+      }
+
+      .child {
+        width: 100px;
+        height: 100px;
+        background-color: #4fb0be;
+        text-align: center;
+        color: white;
+      }
     </style>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-</head>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
+  </head>
 
-<body>
-    <div class="outer-div" style="background-color: #2b496d; height:100px;text-align:center">
-        <div id="home_button" class="inner-div" style="color:white;font-size:30px">산업경영공학과</div>
+  <body>
+    <div
+      class="outer-div"
+      style="background-color: #2b496d; height: 100px; text-align: center"
+    >
+      <div
+        id="home_button"
+        class="inner-div"
+        style="color: white; font-size: 30px"
+      >
+        산업경영공학과
+      </div>
     </div>
 
-    <div style="background-color:#f2f2f2; height:50px; position: relative;">
-        <div class="inner-div" style="left:97vw">
-            <span id="alarm_button" class="material-symbols-outlined">notifications</span>
-        </div>
+    <div style="background-color: #f2f2f2; height: 50px; position: relative">
+      <div class="inner-div" style="left: 97vw">
+        <span id="alarm_button" class="material-symbols-outlined"
+          >notifications</span
+        >
+      </div>
     </div>
 
     <div style="height: 300px">
-        <div style="display: flex; flex-direction: row;height:50px; position: relative;">
-            <div>번호</div>
-            <div>제목</div>
-        </div>
-        <dvi>
-            <!-- 여기가 게시글 시작-->
-            {% for post in posts %}
-            <div style="display: flex; flex-direction: row">
-                <div> {{ post.number }} </div>
-                <div style="font-size:20px"> {{ post.title }} </div>
-                <div> {{ post.date }} </div>
-                
-            </div>
-            {% endfor %}
+      <div
+        style="
+          display: flex;
+          flex-direction: row;
+          height: 50px;
+          position: relative;
+        "
+      >
+        <div>번호</div>
+        <div>제목</div>
+      </div>
+      <div>
+        <!-- #1 현재 날짜와 비교 -->
+        <div>
+          <script>
+            const currentDate = new Date();
+
+            // #1 7일 전 날짜 계산
+            const checkDate = new Date(currentDate);
+            checkDate.setDate(currentDate.getDate() - 7);
+
+            const year = checkDate.getFullYear();
+            const month = (checkDate.getMonth() + 1)
+              .toString()
+              .padStart(2, "0");
+            const day = checkDate.getDate().toString().padStart(2, "0");
+            const formattedDate = `${year}.${month}.${day}`; // #1 2024.02.20 형식의 날짜
+
+            // #1 동일한 날짜의 게시물 개수
+            // document.write(formattedDate);   // #1 오늘 날짜 출력
+            // document.write(checkDate);   // #1 조금 더 자세한 형식의 날짜
+
+            // localDate = new Date().toLocaleDateString()  // #1 2024.2.20 형식의 날짜
+            // document.write(localDate);
+
+            // #1 예시로 "2024.02.20"과 비교
+            // const targetDate = "2024.02.20";
+            // if (formattedDate === targetDate) {
+            //     document.write(" 같은 날짜임");
+            // }
+          </script>
         </div>
 
+        <!-- 여기가 게시글 시작-->
+        {% for post in posts %}
+        <div style="display: flex; flex-direction: row">
+          <div>{{ post.number }}</div>
+          <div style="font-size: 20px">{{ post.title }}</div>
+          <div>{{ post.date }}</div>
+          <script>
+            // #1 post.date와 formattedDate 비교 후 현재 날짜 기준 일주일 내의 게시물에 NEW 표시
+            if ("{{ post.date }}" >= formattedDate) {
+              document.write(
+                '<span style="margin-left: 20px; color: red;">NEW</span>'
+              );
+            }
+          </script>
+        </div>
+        {% endfor %}
+      </div>
     </div>
 
-    <div style="height:150px; border: 1px solid black;">
-        <div >Hot link</div>
-        <div style="display: flex; flex-direction: row; border: None; justify-content:space-evenly">
-            <div class="child"><a href="https://ime.hufs.ac.kr/ime/index.do" target="_blank" style="color:white;text-decoration-line: none;">산업경영공학과 홈페이지</a></div>
-            <div class="child"><a href="https://www.instagram.com/hufsime/" target="_blank" style="color:white;text-decoration-line: none;">산업경영공학과 인스타그램</a></div>
-            <div class="child"><a href="https://open.kakao.com/o/gG0w5Ekf" target="_blank" style="color:white;text-decoration-line: none;">산업경영공학과 오픈채팅방</a></div>
-            <div class="child"><a href="https://chungmok.notion.site/chungmok/HUFS-IME-Capstone-Project-Archive-5641b7b9fbf54a1587df6c76387f3d17" target="_blank" style="color:white;text-decoration-line: none;">졸업프로젝트 Archive</a></div>
+    <div style="height: 150px; border: 1px solid black">
+      <div>Hot link</div>
+      <div
+        style="
+          display: flex;
+          flex-direction: row;
+          border: None;
+          justify-content: space-evenly;
+        "
+      >
+        <div class="child">
+          <a
+            href="https://ime.hufs.ac.kr/ime/index.do"
+            target="_blank"
+            style="color: white; text-decoration-line: none"
+            >산업경영공학과 홈페이지</a
+          >
         </div>
+        <div class="child">
+          <a
+            href="https://www.instagram.com/hufsime/"
+            target="_blank"
+            style="color: white; text-decoration-line: none"
+            >산업경영공학과 인스타그램</a
+          >
+        </div>
+        <div class="child">
+          <a
+            href="https://open.kakao.com/o/gG0w5Ekf"
+            target="_blank"
+            style="color: white; text-decoration-line: none"
+            >산업경영공학과 오픈채팅방</a
+          >
+        </div>
+        <div class="child">
+          <a
+            href="https://chungmok.notion.site/chungmok/HUFS-IME-Capstone-Project-Archive-5641b7b9fbf54a1587df6c76387f3d17"
+            target="_blank"
+            style="color: white; text-decoration-line: none"
+            >졸업프로젝트 Archive</a
+          >
+        </div>
+      </div>
     </div>
 
     <div>학사일정</div>
 
     <script>
-        $('#alarm_button').click(function(){
-            window.location = 'content/alarm';
-        })
+      $("#alarm_button").click(function () {
+        window.location = "content/alarm";
+      });
 
-        $('#home_button').click(function(){
-            window.location = '';
-        })
-
-
+      $("#home_button").click(function () {
+        window.location = "";
+      });
     </script>
-</body>
+  </body>
 </html>
