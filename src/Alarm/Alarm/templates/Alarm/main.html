@@ -78,7 +78,7 @@
         <div>제목</div>
       </div>
       <div>
-        <!-- #1 현재 날짜와 비교 -->
+        <!-- #1 최근(7일) 게시물이면 날짜 우측에 NEW 표시하기 -->
         <div>
           <script>
             const currentDate = new Date();
@@ -116,6 +116,7 @@
           <div style="font-size: 20px">{{ post.title }}</div>
           <div>{{ post.date }}</div>
           <script>
+            // #1 최근(7일) 게시물이면 날짜 우측에 NEW 표시하기
             // #1 post.date와 formattedDate 비교 후 현재 날짜 기준 일주일 내의 게시물에 NEW 표시
             if ("{{ post.date }}" >= formattedDate) {
               document.write(
