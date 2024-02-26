@@ -9,3 +9,4 @@ class Main(APIView):
         #    print(post.title)
         return render(request,"Alarm/main.html",context=dict(posts=post_list))
     
+

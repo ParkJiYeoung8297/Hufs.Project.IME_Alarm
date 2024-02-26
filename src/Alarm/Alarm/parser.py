@@ -4,6 +4,14 @@ from urllib.request import urlopen
 from bs4 import BeautifulSoup
 import re
 
+def today_data():
+    req = requests.get("https://ime.hufs.ac.kr/ime/2807/subview.do?enc=Zm5jdDF8QEB8JTJGYmJzJTJGaW1lJTJGNTA5JTJGYXJ0Y2xMaXN0LmRvJTNG")
+    html = req.content.decode('utf-8','replace') # 한글이 깨져서 넣어주었다.
+    bsObject= BeautifulSoup(html, 'html.parser')
+    target_td_tags = bsObject.find_all('td', class_='td-date')[:5]
+    for td_tag in target_td_tags:
+        print(td_tag.text.strip()) 
+    
 
 
 
@@ -44,7 +52,7 @@ def post_latest_data():
         Post.objects.create(number=td_num,
                             title=title,
                             date=date)
-    print(p_list)
+    #print(p_list)
 
     return p_list
 """

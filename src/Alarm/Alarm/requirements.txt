@@ -1,0 +1,6 @@
+django
+djangorestframework
+requests
+bs4
+django-apscheduler
+gunicorn
